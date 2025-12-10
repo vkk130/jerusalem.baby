@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>שבעים לגבורות - שמותיה של ירושלים: מצאו את השם המושלם</title>
+    
+    <meta property="og:image" content="https://storage.googleapis.com/gweb-image-generation-content/9d77f28a-1a87-4347-a841-f40441999e07.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:title" content="🌟 שבעים לגבורות: הכלי שימצא את השם המושלם לתינוק שלכם משמות ירושלים!">
+    <meta property="og:description" content="האם השם שחשבתם עליו משלב את כל שמותיה הקדושים של עיר הנצח? בדקו עכשיו ותראו את האקרוסטיכון המלא!">
+    <meta property="og:url" content="YOUR_SITE_URL_HERE"> <meta property="og:type" content="website">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;500;700&family=Heebo:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --jerusalem-gold: #D4AF37;
+            --israel-blue: #0038b8;
+            --stone-white: #fdfbf7;
+            --stone-shadow: #e0dcd0;
+            --text-dark: #2c2c2c;
+        }
+
+        body {
+            font-family: 'Heebo', sans-serif;
+            background-color: var(--stone-white);
+            background-image: url('https://www.transparenttextures.com/patterns/wall-4-light.png'); /* טקסטורה עדינה */
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* כותרת ראשית והירו */
+        header {
+            background: linear-gradient(135deg, var(--israel-blue) 0%, #001f66 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--jerusalem-gold);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '✡';
+            font-size: 20rem;
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            opacity: 0.05;
+            color: var(--jerusalem-gold);
+            transform: rotate(-15deg);
+        }
+
+        h1 {
+            font-family: 'Frank Ruhl Libre', serif;
+            font-size: 4rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--jerusalem-gold);
+            margin-top: 10px;
+            font-weight: 300;
+        }
+
+        /* תוכן מרכזי */
+        .container {
+            max-width: 800px;
+            margin: -40px auto 40px;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            border-top: 1px solid var(--stone-shadow);
+        }
+
+        .intro-text {
+            font-size: 1.2rem;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #444;
+            font-weight: 300;
+        }
+
+        /* אזור הקלט */
+        .input-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 12px;
+            border: 2px solid var(--jerusalem-gold);
+        }
+
+        input[type="text"] {
+            width: 100%;
+            max-width: 400px;
+            padding: 15px;
+            font-size: 1.5rem;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: 'Frank Ruhl Libre', serif;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--israel-blue);
+        }
+
+        button {
+            background-color: var(--israel-blue);
+            color: white;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        button:hover {
+            background-color: #002a8a;
+            transform: translateY(-2px);
+        }
+
+        /* אזור התוצאות */
+        #result-area {
+            margin-top: 40px;
+            display: none; /* מוסתר כברירת מחדל */
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .message-box {
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .success-msg {
+            background-color: rgba(212, 175, 55, 0.15);
+            border-right: 5px solid var(--jerusalem-gold);
+            color: #5a4a1b;
+        }
+
+        .fail-msg {
+            background-color: rgba(0, 56, 184, 0.1);
+            border-right: 5px solid var(--israel-blue);
+            color: var(--israel-blue);
+        }
+
+        .acrostic-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .acrostic-row {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            max-width: 500px;
+            background: white;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            transition: transform 0.3s;
+        }
+
+        .acrostic-row:hover {
+            transform: scale(1.02);
+            background: #fdfdfd;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .letter-box {
+            width: 50px;
+            height: 50px;
+            background: var(--israel-blue);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.8rem;
+            font-family: 'Frank Ruhl Libre', serif;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-left: 20px;
+            flex-shrink: 0;
+            border: 2px solid var(--jerusalem-gold);
+        }
+
+        .letter-box.missing {
+            background: #ccc;
+            border-color: #999;
+        }
+
+        .jerusalem-name {
+            font-size: 1.4rem;
+            color: #333;
+            /* שמירה על ניקוד רק עבור השמות ברשימה */
+            font-family: 'Frank Ruhl Libre', serif; 
+        }
+
+        .missing-text {
+            color: #999;
+            font-style: italic;
+        }
+        
+        /* עיצוב כפתורי שיתוף */
+        .share-buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .share-button {
+            padding: 10px 20px;
+            border-radius: 50px; /* עגול יותר */
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: opacity 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .share-button:hover {
+            opacity: 0.8;
+        }
+        
+        .whatsapp {
+            background-color: #25D366;
+        }
+        
+        .facebook {
+            background-color: #4267B2;
+        }
+        
+        .share-icon {
+            font-size: 1.2em;
+        }
+
+
+        /* סמל מגן דוד דקורטיבי */
+        .decoration {
+            text-align: center;
+            margin-top: 50px;
+            color: var(--jerusalem-gold);
+            font-size: 2rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* רספונסיביות */
+        @media (max-width: 600px) {
+            h1 { font-size: 2.5rem; }
+            .container { padding: 20px; margin-top: 0; }
+            .acrostic-row { flex-direction: row; }
+            .letter-box { width: 40px; height: 40px; font-size: 1.4rem; }
+            .jerusalem-name { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>שבעים לגבורות</h1>
+    <div class="subtitle">מחברים את הדור הבא לירושלים</div>
+</header>
+
+<div class="container">
+    <div class="intro-text">
+        אלפיים שנה יהודים בכל רחבי העולם רצו להגיע לירושלים. הם קראו לבניהם ולבנותיהם בשמות כאלה ואחרים, וכעת כשאנחנו כאן בארץ ישראל זה רק ראוי שלשם של ילדכם תהיה זיקה למסורת ולכל אותם דורות שבמשך אלפיים שנות גלות רק חלמו להגיע לרגע הזה.<br><br>
+        <strong>מחפשים שם לילדכם?</strong> הכניסו כאן את השם המלא שחשבתם עליו, ואנחנו נמצא האם ניתן להרכיב אותו רק באמצעות <strong>שבעים</strong> השמות של עיר הבירה של העם היהודי - ירושלים.
+    </div>
+
+    <div class="input-area">
+        <label for="childName" style="font-weight: bold; font-size: 1.1rem;">הכניסו את השם (עברית בלבד):</label>
+        <input type="text" id="childName" placeholder="לדוגמה: תמר, דוד, אריאל">
+        <button onclick="checkJerusalemName()">בדוק חיבור לירושלים</button>
+    </div>
+
+    <div id="result-area">
+        </div>
+
+    <div class="decoration">
+        ✡
+    </div>
+</div>
+
+<script>
+    // רשימת 73 השמות המנוקדת (הניקוד נשאר רק כאן!)
+    const initialJerusalemNames = [
+        "אֶבֶן מַעֲמָסָה", "אֶפְרָתָה", "אֲרִיאֵל", "אַרְמוֹן", "אֵשֶׁת נְעוּרִים", 
+        "בֵּית תְּפִלָּה", "בָּמוֹת", "בְּעוּלָה", "בָּשָׁן", "בְּתוּלָה",
+        "גִּבְעַת הַלְּבוֹנָה", "גּוֹלָה", "גֵּיא חִזָּיוֹן", "גִּילָה", "גִּלְעָד", "גַּן אֱלֹקִים", 
+        "דַּלְתוֹת הָעַמִּים", "דָּרוֹם", "דְּרוּשָׁה",
+        "הַר גָּבֹהַּ", "הַר הַמּוֹר", "הַר מוֹעֵד", "הַר הַקֹּדֶשׁ", "הַר מְרוֹם יִשְׂרָאֵל", 
+        "חַדְרַךְ", "חֶפְצִי בָהּ", "טַבּוּר הָאָרֶץ",
+        "יְבוּס", "יְדִידוּת", "ה' יִרְאֶה", "ה' שָׁמָּה", "יָם", "יַעַר הַנֶּגֶב", 
+        "יְפֵה נוֹף", "יְרוּשָׁלִַם", "יַרְכְּתֵי צָפוֹן",
+        "כַּלָּה", "כְּלִילַת יֹפִי", "כִּסֵּא ה'", "כַּרְמֶל", "לְבָנוֹן", "מִגְדַּל עֵדֶר", 
+        "מוֹרָאָה", "מוֹרִיָּה", "מְנוּחָה", "מְצוּדָה",
+        "מִקְדָּשִׁים", "מָרוֹם", "מְשׂוֹשׂ כָּל הָאָרֶץ", "נַחֲלָה", "סוּרָה", "עֵדֶן", 
+        "עִיר דָּוִד", "עִיר הַיּוֹנָה", "עִיר הַצֶּדֶק",
+        "עִיר ה'", "עִיר לֹא נֶעֱזָבָה", "עִיר שֶׁחֻבְּרָה לָהּ יַחְדָּו", "עֲקָרָה", 
+        "צִיּוֹן", "קִרְיַת מֶלֶךְ רָב", "רַבָּתִי בַגּוֹיִם",
+        "רַבָּתִי עָם", "רָחֵל", "רָמָה", "שֶׁגֶל", "שְׂדֵה יַעַר", "שָׁלֵם", 
+        "שַׂרְתִּי בַמְּדִינוֹת", "שֵׁם חָדָשׁ אֲשֶׁר פִּי ה' יִקְּבֶנּוּ",
+        
+        "וֶרֶד בֶּהָרִים", // ו'
+        "זְבֻל", // ז'
+        "פְּאֵר", // פ'
+        "תִּפְאֶרֶת" // ת'
+    ];
+    
+    // טיפול באותיות סופיות
+    const finalLetterMap = {'ך': 'כ', 'ם': 'מ', 'ן': 'נ', 'ף': 'פ', 'ץ': 'צ'};
+
+    // פונקציה לניקוי ניקוד
+    function removeNikkud(str) {
+        return str.replace(/[\u0591-\u05BD\u05BF-\u05C7]/g, "");
+    }
+
+    const nonNikkudNames = initialJerusalemNames.map(name => removeNikkud(name));
+
+
+    function checkJerusalemName() {
+        const input = document.getElementById('childName').value.trim();
+        const resultArea = document.getElementById('result-area');
+        
+        if (!input) return;
+
+        const cleanName = removeNikkud(input).replace(/[^א-ת]/g, '');
+        
+        if (cleanName.length === 0) {
+            alert("נא להכניס שם בעברית");
+            return;
+        }
+
+        let availableNamesIndices = Array.from(nonNikkudNames.keys());
+        
+        let htmlContent = '';
+        let isPerfectMatch = true;
+        let acrosticRows = '';
+        const selectedMatches = []; 
+
+        for (let char of cleanName) {
+            const searchLetter = finalLetterMap[char] || char;
+
+            const potentialIndices = availableNamesIndices.filter(index => nonNikkudNames[index].startsWith(searchLetter));
+
+            let selectedIndex = null;
+            let selectedMatch = null;
+            
+            if (potentialIndices.length > 0) {
+                const randomIndex = Math.floor(Math.random() * potentialIndices.length);
+                selectedIndex = potentialIndices[randomIndex];
+                selectedMatch = initialJerusalemNames[selectedIndex];
+                
+                selectedMatches.push({ letter: char, name: selectedMatch, success: true });
+                
+                const indexToRemove = availableNamesIndices.indexOf(selectedIndex);
+                if (indexToRemove > -1) {
+                    availableNamesIndices.splice(indexToRemove, 1);
+                }
+            } else {
+                isPerfectMatch = false;
+                selectedMatches.push({ letter: char, name: 'לא נמצאה התאמה', success: false });
+            }
+        }
+        
+        // בניית רשימת האקרוסטיכון
+        selectedMatches.forEach(match => {
+             const isMissing = !match.success;
+             acrosticRows += `
+                <div class="acrostic-row">
+                    <div class="letter-box ${isMissing ? 'missing' : ''}">${match.letter}</div>
+                    <div class="jerusalem-name ${isMissing ? 'missing-text' : ''}">${isMissing ? match.name : match.name}</div>
+                </div>
+            `;
+        });
+        
+        // יצירת תוכן השיתוף המשופר
+        const siteUrl = window.location.href; 
+        
+        // יצירת רשימת האקרוסטיכון המלאה לשיתוף (עם התיקונים שביקשת)
+        let shareList = selectedMatches.map(m => {
+            if (m.success) {
+                return `\n✨ ${m.letter} - ${m.name}`; // ללא (נמצא!)
+            } else {
+                return `\n❌ ${m.letter} - ${m.name}`; // ללא סוגריים מסביב
+            }
+        }).join('');
+        
+        let shareText;
+
+        if (isPerfectMatch) {
+            shareText = `📣 מצאנו שם מושלם! 📣\nהשם *${input}* הוא צרוף מנצח של שמות ירושלים הקדושים!`;
+            shareText += `\n\n**האקרוסטיכון המלא:**\n${shareList}\n\nבואו לבדוק את השם שלכם גם: ${siteUrl}`;
+        } else {
+            // הוספת הצגת הניסיון הכי טוב גם בכישלון
+            shareText = `בדקתי את השם *${input}* בכלי 'שבעים לגבורות' – זה קרוב, אבל עדיין לא מושלם! 😔`;
+            shareText += `\n\n**הניסיון הטוב ביותר:**\n${shareList}`;
+            shareText += `\n\nבואו לנסות שם חדש: ${siteUrl}`;
+        }
+
+
+        // בניית כפתורי השיתוף
+        const shareButtonsHtml = `
+            <div class="share-buttons">
+                <a href="https://wa.me/?text=${encodeURIComponent(shareText)}" target="_blank" class="share-button whatsapp">
+                    <span class="share-icon">💬</span> שיתוף בוואטסאפ
+                </a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(siteUrl)}&quote=${encodeURIComponent(shareText)}" target="_blank" class="share-button facebook">
+                    <span class="share-icon">👍</span> שיתוף בפייסבוק
+                </a>
+            </div>
+        `;
+
+
+        // יצירת ההודעה למשתמש (עם ניקוד שהוסר)
+        if (isPerfectMatch) {
+            htmlContent += `
+                <div class="message-box success-msg">
+                    ''הללויה, וזה השיר עולה מכל פינות העיר''! <br>
+                    העיר היא ירושלים ו-<strong>${input}</strong> הוא צירוף מושלם של שמותיה הרבים של העיר שהיא משוש כל הארץ. <br>
+                    ברכות ואיחולים, אני חושב שמצאתם לכם שם!
+                    ${shareButtonsHtml}
+                </div>
+            `;
+        } else {
+            htmlContent += `
+                <div class="message-box fail-msg">
+                    ניסינו מאוד, אבל זה לא מספיק... <br>
+                    השם הזה הוא אולי עם זיקה לעיר הקודש, אבל ירושלים היא אחת והיא בנויה לתלפיות. וכמו שרציתם שירושלים תישאר ככה, באותה מידה אתם צריכים להתאמץ קצת יותר כדי לקבל שם עם חיבור מלא ואמיתי לירושלים.
+                    ${shareButtonsHtml}
+                </div>
+            `;
+        }
+
+        // הוספת רשימת האקרוסטיכון
+        htmlContent += `<div class="acrostic-container">${acrosticRows}</div>`;
+
+        resultArea.innerHTML = htmlContent;
+        resultArea.style.display = 'block';
+    }
+</script>
+
+</body>
+</html>
